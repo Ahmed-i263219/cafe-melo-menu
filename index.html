@@ -1,55 +1,58 @@
-
 <!--Ahmed Hassan Naveed, 26i-3219, SE-A-->
-
 <!DOCTYPE html>
-
 <html>
 <head>
-    <title> Cafe Menu</title>
+    <title>Cafe Melo - Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Cafe melo</h1>
-    <p>Welcome to Cafe Melo. We strive to make you happy with our delicious coffee and tea with our imported beans all the way from Brazil and milk sourced from Australia.</p>
-    <br>
+    
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="order.html">Order</a>
+    </nav>
+
+    <h1>Cafe Melo</h1>
+    <p class="intro-text">Welcome to Cafe Melo. We strive to make you happy with our delicious coffee and tea with our imported beans all the way from Brazil and milk sourced from Australia.</p>
     <br>
 
+    <!-- Image Carousel -->
+    <div class="carousel-container">
+        <!-- The first image uses your existing local file -->
+        <img id="carousel-img" src="images/7a29dfc903d98c6ba13b687ef1fa1d1a.jpg" alt="coffee picture">
+        
+        <div class="carousel-buttons">
+            <button onclick="prevImage()">Previous</button>
+            <button onclick="nextImage()">Next</button>
+        </div>
+    </div>
 
-    <img src="images\7a29dfc903d98c6ba13b687ef1fa1d1a.jpg" alt="coffee picture">
-    <br>
-    <h1> Menu </h1>
-    <h2>Hot drinks</h2>
+    <!-- JavaScript to run the carousel -->
+    <script>
+        // Add your local image paths to this array as you download new pictures.
+        // I have included placeholder URLs for the other coffee and tea images for now.
+        const images = [
+            "images/7a29dfc903d98c6ba13b687ef1fa1d1a.jpg",
+            "images/Gemini_Generated_Image_6teioh6teioh6tei.jpg",
+            "images/Gemini_Generated_Image_6teioh6teioh6tei (1).jpg",
+            "images/Gemini_Generated_Image_6teioh6teioh6tei (2).jpg"
+        ];
+        
+        let currentIndex = 0;
+        const imgElement = document.getElementById("carousel-img");
 
-    <table style="width:100%">
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-        </tr>
-        <tr>
-            <td>Chai</td>
-            <td>Rs. 150</td>
-        </tr>
-        <tr>
-            <td>Latte</td>
-            <td>Rs. 250</td>
-        </tr>
-        <tr>
-            <td>Espresso</td>
-            <td>Rs. 150</td>
-        </tr>
-    </table>
-    <br>
-    <br>
-    <button onclick="orderplaced()">Place Order</button>
- 
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            imgElement.src = images[currentIndex];
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            imgElement.src = images[currentIndex];
+        }
+    </script>
 
 </body>
-
 </html>
-
-<script>
-    function orderplaced(){
-        console.log("Order placed button was clicked")
-        window.alert("Your order has been placed. Thank you for choosing Cafe Melo")
-    }
-</script>
